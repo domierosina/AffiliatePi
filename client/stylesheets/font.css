@@ -1,0 +1,36 @@
+/*
+ * Theme Name: AffiliatePi
+ * Description: FONT INSTALLING FOR THE THEME
+ * Version: 1.0
+ * Author: Domenica Burroughs
+ *
+ */
+
+@font-face {
+    font-family: Lato-Black;
+    src: url(/font/Lato-Black.woff);
+}
+@font-face {
+    font-family: Lato-Bold;
+    src: url(/font/Lato-Bold.woff);
+}
+@font-face {
+    font-family: Lato-Hairline;
+    src: url(/font/Lato-Hairline.woff);
+}
+@font-face {
+    font-family: Lato-Light;
+    src: url(/font/Lato-Light.woff);
+}
+@font-face {
+    font-family: Lato-Regular;
+    src: url(/font/Lato-Regular.woff);
+}
+@font-face {
+    font-family: Lato-Thin;
+    src: url(/font/Lato-Thin.woff);
+}
+@font-face {
+    font-family: Lato-Medium;
+    src: url(/font/Lato-Medium.woff);
+}

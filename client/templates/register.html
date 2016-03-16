@@ -1,0 +1,121 @@
+<template name ="register">
+<div class="container">
+<div class="row">
+  <div class="col-md-4">
+<h4>Terms &amp; Conditions</h4>
+<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non
+  commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed
+  posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit
+  sit amet non magna. Curabitur blandit tempus porttitor.</p>
+
+  <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis, est non
+    commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed
+    posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit
+    sit amet non magna. Curabitur blandit tempus porttitor.</p>
+  </div>
+  <div class="col-md-8 hr">
+  <h4 class="center">
+    Register to Become a Partner!
+  </h4>
+  <br>
+  <form class="form-horizontal">
+    <fieldset>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Full Name *</label>
+  <div class="col-md-4">
+  <input id="textinput" name="registerFirstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+  </div>
+  <div class="col-md-4">
+  <input id="textinput" name="registerLastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="prependedtext">Username *</label>
+  <div class="col-md-8">
+    <div class="input-group">
+      <span class="input-group-addon">@</span>
+      <input id="prependedtext" name="registerUsername" class="form-control" placeholder="Username" type="text" required="">
+    </div>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Email *</label>
+  <div class="col-md-8">
+  <input id="textinput" name="registerEmail" type="text" placeholder="Email" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="passwordinput">Password *</label>
+  <div class="col-md-8">
+    <input id="passwordinput" name="registerPassword" type="password" placeholder="Password" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">PayPal Email</label>
+  <div class="col-md-8">
+  <input id="textinput" name="registerPayPal" type="text" placeholder="PayPal Email" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="businessSupport">Select business to support *</label>
+  <div class="col-md-8">
+    <select id="businessSupport" name="registerBusinessSupport" class="form-control">
+      <option value="1">University of Winnipeg</option>
+      <option value="2">Google</option>
+      <option value="3">Medium</option>
+      <option value="4">Amazon</option>
+      <option value="5">B&amp;H</option>
+    </select>
+  </div>
+</div>
+
+<!-- Multiple Checkboxes -->
+<div class="form-group">
+  <div class="col-md-12">
+  <div class="checkbox center">
+    <label for="checkboxes-0">
+      <input type="checkbox" name="registerAgree" id="checkboxes-0" value="1">
+      I have read &amp; understand the terms &amp; conditions. *
+    </label>
+	</div>
+  <div class="checkbox center">
+    <label for="checkboxes-1">
+      <input type="checkbox" name="registerNewsletter" id="checkboxes-1" value="2">
+      I would like to receive the newsletter.
+    </label>
+	</div>
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="button1id"></label>
+  <div class="col-md-8">
+    <button id="button1id" name="Register" class="btn btn-success">Register</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+  </div>
+</div>
+</fieldset>
+</form>
+</div>
+</div>
+</div>
+</template>
