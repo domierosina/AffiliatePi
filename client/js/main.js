@@ -1,11 +1,47 @@
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
-        var email = $('[name=email]').val();
-        var password = $('[name=password]').val();
+        var email = $('[name=registerEmail]').val();
+        var password = $('[name=registerPassword]').val();
+        var username = $('[name=registerUsername]').val();
+        var ppEmail = $('[name=registerPayPal]').val();
+        var firstName = $('[name=registerFirstName]').val();
+        var lastName = $('[name=registerLastName]').val();
+        var busSup = $('[name=registerBusinessSupport]').val();
+        var terms = event.target.registerAgree.checked;
+        var news = event.target.registerNewsletter.checked;
         Accounts.createUser({
             email: email,
-            password: password
+            password: password,
+            username: username,
+            paypalEmail: ppEmail,
+            name: {firstName: firstName, lastName: lastName},
+            businessSup : busSup,
+            terms: terms,
+            news: news
+        });
+        Router.go('success');
+    }
+});
+
+Template.addBus.events({
+    'submit form': function(event){
+        event.preventDefault();
+        var email = $('[name=busEmail]').val();
+        var password = $('[name=busPassword]').val();
+        var contact = $('[name=busContactName]').val();
+        var bName = $('[name=busName]').val();
+        var url = $('[name=busURL]').val();
+        var bterms = event.target.busAgree.checked;
+        var bnews = event.target.busNewsletter.checked;
+        Accounts.createUser({
+            email: email,
+            password: password,
+            contact: contact,
+            bname: bname,
+            url : bURL,
+            terms: bterms,
+            news: bnews
         });
         Router.go('success');
     }
@@ -19,11 +55,19 @@ Template.navigation.events({
     }
 });
 
-Template.success.events({
+Template.login.events({
     'submit form': function(event){
         event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
         Meteor.loginWithPassword(email, password);
+    }
+});
+
+Meteor.loginWithPassword(email, password, function(error){
+    if(error){
+        console.log(error.reason);
+    } else {
+        Router.go("dashboard");
     }
 });
