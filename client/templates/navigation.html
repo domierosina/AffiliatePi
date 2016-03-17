@@ -15,9 +15,8 @@
     <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right">
       <li><a href="{{pathFor route='home'}}">Home</a></li>
-      <li><a href="{{pathFor route='home'}}">Page 1</a></li>
-      <li><a href="{{pathFor route='home'}}">Page 2</a></li>
-      <li><a href="{{pathFor route='home'}}">Page 3</a></li>
+      <li><a href="{{pathFor route='addBus'}}">Add Your Business</a></li>
+      <li><a href="{{pathFor route='register'}}">Create Account</a></li>
       {{#if currentUser}}
           <li><a href="#" class="logout">Logout</a> {{currentUser.profile.name}}</li>
           {{else}}

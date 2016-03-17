@@ -7,7 +7,7 @@ Template.register.events({
             email: email,
             password: password
         });
-        Router.go('home');
+        Router.go('success');
     }
 });
 

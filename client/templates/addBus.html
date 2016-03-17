@@ -1,0 +1,98 @@
+<template name="addBus">
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+  <h4>Add Your Business</h4>
+  <p>Want to get more website traffic? Need an easy way to advertise? Why not
+    use your advertising budget toward those who love your brand! Sumbit using
+    the form on the right to get your business listed. </p>
+
+    <p>Currently we only offer pay per click, but in the near future you will be
+      able to choose other methods. Sign up for the newsletter to keep you posted
+    on what is going on.</p>
+    </div>
+    <div class="col-md-8 hr">
+    <h4 class="center">
+      Register Your Business!
+    </h4>
+    <br>
+    <form class="form-horizontal">
+      <fieldset>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Business Contact Name *</label>
+    <div class="col-md-8">
+    <input id="textinput" name="busContactName" type="text" placeholder="Contact Name" class="form-control" required="">
+  </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Email *</label>
+    <div class="col-md-8">
+    <input id="textinput" name="busEmail" type="text" placeholder="Email" class="form-control" required="">
+
+    </div>
+  </div>
+
+  <!-- Password input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="passwordinput">Password *</label>
+    <div class="col-md-8">
+      <input id="passwordinput" name="registerPassword" type="password" placeholder="Password" class="form-control" required="">
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">Business Name * </label>
+    <div class="col-md-8">
+    <input id="textinput" name="busName" type="text" placeholder="Business Name" class="form-control" required="">
+
+    </div>
+  </div>
+
+  <!-- Prepended text-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="prependedtext">Business URL *</label>
+    <div class="col-md-8">
+      <div class="input-group">
+        <span class="input-group-addon">http://</span>
+        <input id="prependedtext" name="busURL" class="form-control" placeholder="Username" type="text" required="">
+      </div>
+    </div>
+  </div>
+
+  <!-- Multiple Checkboxes -->
+  <div class="form-group">
+    <div class="col-md-12">
+    <div class="checkbox center">
+      <label for="checkboxes-0">
+        <input type="checkbox" name="registerAgree" id="checkboxes-0" value="1">
+        I have read &amp; understand the terms &amp; conditions. *
+      </label>
+  	</div>
+    <div class="checkbox center">
+      <label for="checkboxes-1">
+        <input type="checkbox" name="registerNewsletter" id="checkboxes-1" value="2">
+        I would like to receive the newsletter for companies.
+      </label>
+  	</div>
+    </div>
+  </div>
+
+  <!-- Button (Double) -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="button1id"></label>
+    <div class="col-md-8">
+      <button id="button1id" name="Register" class="btn btn-success">Register</button>
+      <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
+    </div>
+  </div>
+  </fieldset>
+  </form>
+  </div>
+  </div>
+  </div>
+</template>
