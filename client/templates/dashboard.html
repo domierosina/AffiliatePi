@@ -1,6 +1,101 @@
 <template name ="dashboard">
 <div class="container">
-<p>You are logged in.</p>
-<p><a href="#" class="logout">Logout</a></p>
+  <div class="row">
+    <div class ="col-sm-3">
+      <p class="center">{{username}}, you are logged in.</p>
+      <p class="center">Welcome back! </p>
+      <br>
+      <h6 class="balance">Payable Balance &nbsp; </h6>
+      <br>
+      <a href="#" class="btn btn-danger center logout">Logout</a>
+      <br>
+      <h5>Update Your Account?</h5>
+      <p>To update your account information or deactivate your account please
+        contact the administrator at <a href="mailto:#">webmaster@affiliatepi.ca</a>. </p>
+      <!-- Would ideally be linked to page where the user can review the rules and terms -->
+      <p class="center"><a href="#" class="dashControls">Review Terms &amp; Conditions</a></p>
+      <h5>Promotion Kits</h5>
+        <!-- Websites would be able to give advertising banners with these kits -->
+        <p class="center"><a href="#" class="dashControls">FACEBOOK KIT</a></p>
+        <p class="center"><a href="#" class="dashControls">TWITTER KIT</a></p>
+        <p class="center"><a href="#" class="dashControls">BLOG KIT</a></p>
+
+      <h5>How to Get Clicks!</h5>
+        <p>To manually share any link with your Partner code applied, add the
+          following parameter to the end of the business URL you support: /ClickServlet?id= </p>
+
+      </div>
+
+    <div class ="col-sm-9 hr">
+      <!-- Recap box for the information of the user/business-->
+      <div id="recapbox" class="recapbox">
+         <table border="1" cellpadding="15" cellspacing="" >
+            <tr>
+               <td>
+                  <p class="recap">Clicks this Month</p>
+                  <p class="stats">300</p>
+               </td>
+               <td>
+                  <p class="recap">Earned this Month</p>
+                  <p class="stats">$0.00</p>
+               </td>
+               <td>
+                  <p class="recap">Total Earned</p>
+                  <p class="stats">$0.00</p>
+               </td>
+            </tr>
+         </table>
+      </div>
+      <button type="submit" style="width: 90%;" class="btn btn-danger center">Payout Balance</button>
+      <br>
+      <br>
+<!-- Collapsable Divs for Graphs -->
+      <div class="panel-group" id="accordion">
+    <div class="panel panel-default" id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne"
+           href="#collapseOne">
+        Daily Click Statistics
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="panel2">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseTwo"
+           href="#collapseTwo" class="collapsed">
+          Monthly Click Statistics
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse in">
+            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
+        </div>
+    </div>
+    <div class="panel panel-default" id="panel3">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseThree"
+           href="#collapseThree" class="collapsed">
+          Top Performers Statistics
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse in">
+            <div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
 </div>
 </template>

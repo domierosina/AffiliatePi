@@ -6,11 +6,8 @@
  *
  */
 
- @import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,700);
-
  p {
-     font-family: 'Lato', sans-serif;
-     font-weight: 300;
+     font-family: 'Lato-Light', sans-serif;
      font-size: 13px;
      color: #4A4A4A;
    }
@@ -21,6 +18,10 @@
 
   a:hover {
     color: #7f8c8d;
+  }
+
+  a.btn {
+    color: #fff;
   }
 
  .center {
@@ -62,6 +63,10 @@
      color: #4A4A4A;
      text-align: left;
  }
+
+  h5 {
+    text-align:center;
+  }
 
 
  .lrg {
@@ -113,6 +118,50 @@
 .large {
   font-size: 80px;
 }
+
+/* For the collapse boxes*/
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+/* For the recapbox on the dashboard */
+
+.recapbox {
+    border: 1px solid #979797;
+    width: 90%;
+    display: box;
+    margin: 20px auto;
+    height: auto;
+}
+table {
+    text-align: center;
+    background-color: #fff;
+    border-collapse: collapse;
+    border: 1px solid #fff;
+    color: #979797;
+    width: 100%;
+    display: box;
+    margin: 20px auto;
+    /* Click This Month: */
+
+    font-family: Lato;
+    font-size: 12px;
+    color: #767676;
+    line-height: 10px;
+}
+p.stats {
+    font-family: Lato;
+    font-size: 24px;
+    color: #4A4A4A;
+    line-height: normal;
+}
+
 
 /*
 * Override Some Bootstrap Feature
