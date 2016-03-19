@@ -31,14 +31,14 @@ Template.addBus.events({
         var password = $('[name=busPassword]').val();
         var contact = $('[name=busContactName]').val();
         var bName = $('[name=busName]').val();
-        var url = $('[name=busURL]').val();
+        var bURL = $('[name=busURL]').val();
         var bterms = event.target.busAgree.checked;
         var bnews = event.target.busNewsletter.checked;
         Accounts.createUser({
             email: email,
             password: password,
             contact: contact,
-            bname: bname,
+            bname: bName,
             url : bURL,
             terms: bterms,
             news: bnews
@@ -71,3 +71,27 @@ Meteor.loginWithPassword(email, password, function(error){
         Router.go("dashboard");
     }
 });
+
+
+
+Template.businessList.helpers({
+    Bus: function() {
+        return Business.findAll();
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
