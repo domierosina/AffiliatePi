@@ -67,11 +67,11 @@ Template.navigation.events({
     }
 });
 
-Template.login.events({
+Template.loginButton.events({
     'submit form': function(event){
         event.preventDefault();
-        var email = $('[name=email]').val();
-        var password = $('[name=password]').val();
+        var email = event.target.email.value;
+        var password = event.target.email.value;
         Meteor.loginWithPassword(email, password);
     }
 });
