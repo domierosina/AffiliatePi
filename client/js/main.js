@@ -1,3 +1,13 @@
+Meteor.subscribe('userData');
+Meteor.subscribe('business');
+Meteor.subscribe('clicks');
+
+var business = Business.find();
+
+Template.register.helpers({
+    bus: business
+});
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -14,9 +24,11 @@ Template.register.events({
             email: email,
             password: password,
             username: username,
-            paypalEmail: ppEmail,
-            name: {firstName: firstName, lastName: lastName},
-            businessSup : busSup,
+            profile: {
+                paypalEmail: ppEmail,
+                name: {firstName: firstName, lastName: lastName},
+                businessURL : busSup
+            },
             terms: terms,
             news: news
         });
@@ -74,11 +86,6 @@ Meteor.loginWithPassword(email, password, function(error){
 
 
 
-Template.businessList.helpers({
-    Bus: function() {
-        return Business.findAll();
-    }
-});
 
 
 

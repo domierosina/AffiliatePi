@@ -1,4 +1,4 @@
-<template name ="register">
+<template name="register">
 <div class="container">
 <div class="row">
   <div class="col-md-4">
@@ -78,7 +78,9 @@
   <label class="col-md-4 control-label" for="businessSupport">Select business to support *</label>
   <div class="col-md-8">
     <select id="businessSupport" name="registerBusinessSupport" class="form-control">
-      {{> businessList}}
+        {{#each bus}}
+            <option value="{{busURL}}">{{busName}}</option>
+        {{/each}}
     </select>
   </div>
 </div>
