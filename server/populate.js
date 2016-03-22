@@ -11,7 +11,7 @@ if(Business.find().count() == 0){
         busURL: 'http://www.amazon.ca/'
     })
     Business.insert({
-        busName: 'Uwinnipeg',
+        busName: 'UWinnipeg',
         busURL: 'http://www.uwinnipeg.ca/'
     })
 }

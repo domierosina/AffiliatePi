@@ -5,7 +5,6 @@
       <p class="center">{{username}}, you are logged in.</p>
       <p class="center">Welcome back! </p>
       <br>
-      <h6 class="balance">Payable Balance &nbsp; </h6>
       <br>
       <a href="#" class="btn btn-danger center logout">Logout</a>
       <br>
@@ -25,48 +24,15 @@
           following parameter to the end of the business URL you support: /ClickServlet?id= </p>
 
       </div>
+<!-- This is for displaying the proper information -->
+    <!-- {{#if isInRole 'admin'}}
+        {{>admin }}
+    {{else if isInRole 'user'}}
+        {{>user }}
+    {{else if isInRole'business'}}
+        {{>business }}
+    {{/if}} -->
 
-    <div class ="col-sm-9 hr">
-      <!-- Recap box for the information of the user/business-->
-      <div id="recapbox" class="recapbox">
-         <table border="1" cellpadding="15" cellspacing="" >
-            <tr>
-               <td>
-                  <p class="recap">Clicks this Month</p>
-                  <p class="stats">300</p>
-               </td>
-               <td>
-                  <p class="recap">Earned this Month</p>
-                  <p class="stats">$0.00</p>
-               </td>
-               <td>
-                  <p class="recap">Total Earned</p>
-                  <p class="stats">$0.00</p>
-               </td>
-            </tr>
-         </table>
-      </div>
-      <button type="submit" style="width: 90%;" class="btn btn-danger center">Payout Balance</button>
-      <br>
-      <br>
-<!-- Collapsable Divs for Graphs -->
-    <div class="panel-group" id="accordion">
-    <div class="panel panel-default" id="panel1">
-        <div class="panel-heading">
-             <h4 class="panel-title">
-              <a data-toggle="collapse" data-target="#collapseOne"
-                 href="#collapseOne">
-              Daily Click Statistics
-              </a>
-            </h4>
-
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
-            <div class="panel-body">{{> graph3}}</div>
-    </div>
-</div>
-</div>
-    </div>
 </div>
 </div>
 </template>
