@@ -7,7 +7,7 @@
  */
 
  p {
-     font-family: 'Lato-Light';
+     font-family: 'Lato-Light' !important;
      font-size: 13px;
      color: #4A4A4A;
    }

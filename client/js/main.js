@@ -1,3 +1,13 @@
+Meteor.subscribe('userData');
+Meteor.subscribe('business');
+Meteor.subscribe('clicks');
+
+var business = Business.find();
+
+Template.register.helpers({
+    bus: business
+});
+
 Template.register.events({
     'submit form': function(event){
         event.preventDefault();
@@ -14,9 +24,11 @@ Template.register.events({
             email: email,
             password: password,
             username: username,
-            paypalEmail: ppEmail,
-            name: {firstName: firstName, lastName: lastName},
-            businessSup : busSup,
+            profile: {
+                paypalEmail: ppEmail,
+                name: {firstName: firstName, lastName: lastName},
+                businessURL : busSup
+            },
             terms: terms,
             news: news
         });
@@ -31,14 +43,14 @@ Template.addBus.events({
         var password = $('[name=busPassword]').val();
         var contact = $('[name=busContactName]').val();
         var bName = $('[name=busName]').val();
-        var url = $('[name=busURL]').val();
+        var bURL = $('[name=busURL]').val();
         var bterms = event.target.busAgree.checked;
         var bnews = event.target.busNewsletter.checked;
         Accounts.createUser({
             email: email,
             password: password,
             contact: contact,
-            bname: bname,
+            bname: bName,
             url : bURL,
             terms: bterms,
             news: bnews
@@ -71,3 +83,22 @@ Meteor.loginWithPassword(email, password, function(error){
         Router.go("dashboard");
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
