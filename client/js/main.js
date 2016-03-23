@@ -67,19 +67,31 @@ Template.navigation.events({
     }
 });
 
-Template.loginButton.events({
-    'submit form': function(event){
+Template.login.events({
+    'submit #login-nav': function(event, template) {
         event.preventDefault();
-        var email = event.target.email.value;
-        var password = event.target.email.value;
-        Meteor.loginWithPassword(email, password);
-    }
-});
+        // 1. Collect the username and password from the form
+        var email = template.find('#email').value;
+        var password = template.find('#password').value;
 
-Meteor.loginWithPassword(email, password, function(error){
-    if(error){
-        console.log(error.reason);
-    } else {
-        Router.go("dashboard");
+        // 2. Attempt to login.
+        Meteor.loginWithPassword(username, password, function(error) {
+            // 3. Handle the response
+            if (Meteor.user()) {
+                // Redirect the user to where they're loggin into. Here, Router.go uses
+                // the iron:router package.
+                Router.go('dashboard');
+            } else {
+                // If no user resulted from the attempt, an error variable will be available
+                // in this callback. We can output the error to the user here.
+                var message = "<strong>" + error.reason + "</strong>";
+
+                template.find('#form-messages').html(message);
+            }
+
+            return;
+        });
+
+        return false;
     }
 });

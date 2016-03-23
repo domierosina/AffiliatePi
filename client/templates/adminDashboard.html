@@ -22,6 +22,15 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 </script>
 
 <div class ="col-sm-9 hr">
+<h3>Current Users</h3>
+{{#if Template.subscriptionsReady}}
+	<!-- This is displayed when all data is ready. -->
+	{{> userList}}
+{{else}}
+	No Pending Users...
+{{/if}}
+
+{{> securityNote}}
 
 	<br>
 	<br>
