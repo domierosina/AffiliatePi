@@ -2,15 +2,13 @@
     {{> navigation}}
       <div class="jumbotron">
         <div class="container">
-          {{> jumboMessage}}
           {{#if currentUser}}
             {{> jumboWelcome}}
+          {{else}}
+              {{> jumboMessage}}
           {{/if}}
         </div>
       </div>
-      {{#if currentUser}}
-              {{> dashboard}}
-      {{/if}}
       {{> yield}}
 
 

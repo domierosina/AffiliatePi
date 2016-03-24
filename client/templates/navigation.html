@@ -18,7 +18,7 @@
       <li><a href="{{pathFor route='addBus'}}">Add Your Business</a></li>
       <li><a href="{{pathFor route='register'}}">Create Account</a></li>
       {{#if currentUser}}
-          <li><a href="#" class="logout">Logout</a> {{currentUser.profile.name}}</li>
+          <li><a href="#" class="logout">Logout</a> {{currentUser.username}}</li>
           {{else}}
       <li class="dropdown">
     {{> loginButton}}

@@ -2,6 +2,18 @@ Meteor.subscribe('userData');
 Meteor.subscribe('business');
 Meteor.subscribe('clicks');
 
+//Maybe use this.
+//Meteor.users.after.insert(function(userId, user) {
+//    if(user.profile.type === "user") {
+//        Roles.addUsersToRoles(user._id,"user")
+//    } else if (user.profile.type === "business") {
+//        Roles.addUsersToRoles(user._id, "business")
+//    } else if (user.profile.type === "admin") {
+//        Roles.addUsersToRoles(user._id, "admin")
+//    }
+//});
+
+
 var business = Business.find();
 
 Template.register.helpers({
@@ -20,18 +32,39 @@ Template.register.events({
         var busSup = $('[name=registerBusinessSupport]').val();
         var terms = event.target.registerAgree.checked;
         var news = event.target.registerNewsletter.checked;
-        Accounts.createUser({
+        var type = "user";
+
+        var pass = {
             email: email,
             password: password,
             username: username,
-            profile: {
-                paypalEmail: ppEmail,
-                name: {firstName: firstName, lastName: lastName},
-                businessURL : busSup
-            },
-            terms: terms,
-            news: news
-        });
+            ppEmail: ppEmail,
+            firstName: firstName,
+            lastName: lastName,
+            busSup: busSup,
+            type: type
+        };
+
+        //call the meteor method instead of doing it here
+        Meteor.call('createNewUser', pass);
+
+        //var use = Accounts.createUser({
+        //    email: email,
+        //    password: password,
+        //    username: username,
+        //    profile: {
+        //        paypalEmail: ppEmail,
+        //        name: {firstName: firstName, lastName: lastName},
+        //        businessURL : busSup,
+        //        type: type
+        //    },
+        //    terms: terms,
+        //    news: news
+        //});
+        //
+        ////add to user role.
+        //Roles.addUsersToRoles(use, ['user']);
+
         Router.go('success');
     }
 });
@@ -46,15 +79,22 @@ Template.addBus.events({
         var bURL = $('[name=busURL]').val();
         var bterms = event.target.busAgree.checked;
         var bnews = event.target.busNewsletter.checked;
-        Accounts.createUser({
+
+        var userBus = Accounts.createUser({
             email: email,
             password: password,
-            contact: contact,
-            bname: bName,
-            url : bURL,
+            profile: {
+                contact: contact,
+                bname: bName,
+                url: bURL,
+                type: 'business'
+            },
             terms: bterms,
             news: bnews
         });
+
+        Roles.addUsersToRoles(userBus, ['business']);
+
         Router.go('success');
     }
 });
@@ -67,22 +107,23 @@ Template.navigation.events({
     }
 });
 
-Template.login.events({
+Template.loginButton.events({
     'submit form': function(event){
         event.preventDefault();
-        var email = $('[name=email]').val();
-        var password = $('[name=password]').val();
+        var email = event.target.email.value;
+        var password = event.target.password.value;
         Meteor.loginWithPassword(email, password);
+        Router.go("dashboard")
     }
 });
 
-Meteor.loginWithPassword(email, password, function(error){
-    if(error){
-        console.log(error.reason);
-    } else {
-        Router.go("dashboard");
-    }
-});
+//Meteor.loginWithPassword(email, password, function(error){
+//    if(error){
+//        console.log(error.reason);
+//    } else {
+//        Router.go("dashboard");
+//    }
+//});
 
 
 
