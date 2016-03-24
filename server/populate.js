@@ -11,7 +11,7 @@ if(Business.find().count() == 0){
         busURL: 'http://www.amazon.ca/'
     })
     Business.insert({
-        busName: 'UWinnipeg',
+        busName: 'Uwinnipeg',
         busURL: 'http://www.uwinnipeg.ca/'
     })
 }
@@ -24,4 +24,41 @@ Meteor.publish('business', function() {
 });
 Meteor.publish('clicks', function(){
     return Clicks.find()
+});
+
+Meteor.methods({
+    createNewUser: function(userInfo) {
+        var use = Accounts.createUser({
+            email: userInfo.email,
+            password: userInfo.password,
+            username: userInfo.username,
+            profile: {
+                paypalEmail: userInfo.ppEmail,
+                name: {
+                    firstName: userInfo.firstName,
+                    lastName: userInfo.lastName
+                },
+                businessURL: userInfo.busSup,
+                type: userInfo.type
+            },
+        });
+
+        Roles.addUsersToRoles(use, ['user']);
+    }
+})
+
+Accounts.onCreateUser(function (options, user) {
+    if(options.profile.type == "user") {
+        user.roles = ['user'];
+    } else if(options.profile.type == 'business'){
+        user.roles = ['business'];
+    } else if(options.profile.type == 'admin') {
+        user.roles = ['admin'];
+    };
+
+    //user.roles = ['user'];
+
+    if (options.profile)
+        user.profile = options.profile;
+    return user;
 });
