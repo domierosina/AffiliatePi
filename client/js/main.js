@@ -14,10 +14,10 @@ Meteor.subscribe('clicks');
 //});
 
 
-var business = Business.find();
+
 
 Template.register.helpers({
-    bus: business
+    bus: Meteor.users.find({"profile.type": 'business'})
 });
 
 Template.register.events({
@@ -80,20 +80,18 @@ Template.addBus.events({
         var bterms = event.target.busAgree.checked;
         var bnews = event.target.busNewsletter.checked;
 
-        var userBus = Accounts.createUser({
+        var userBus = {
             email: email,
             password: password,
-            profile: {
-                contact: contact,
-                bname: bName,
-                url: bURL,
-                type: 'business'
-            },
-            terms: bterms,
-            news: bnews
-        });
+            contact: contact,
+            bname: bName,
+            url: bURL,
+            type: 'business'
+        };
 
-        Roles.addUsersToRoles(userBus, ['business']);
+        //Roles.addUsersToRoles(userBus, ['business']);
+
+        Meteor.call('createBusiness', userBus);
 
         Router.go('success');
     }
