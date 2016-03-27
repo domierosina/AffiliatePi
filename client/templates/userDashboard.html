@@ -1,0 +1,84 @@
+<!--
+* This template is for the user, what they see on the dashboard.
+*
+-->
+<template name="user">
+<script>
+var buyerData = {
+	labels : ["January","February","March","April","May","June"],
+	datasets : [
+		{
+			fillColor : "rgba(203, 97, 89, 0.4)",
+			strokeColor : "#B2201C",
+			pointColor : "#fff",
+			pointStrokeColor : "#8D0805",
+			data : [203,156,99,251,305,247]
+		}
+	]
+}
+var buyers = document.getElementById('dayClicks').getContext('2d');
+            // draw line chart
+            new Chart(buyers).Line(buyerData);
+</script>
+
+<div class ="col-sm-9 hr">
+	<!-- Recap box for the information of the user/business-->
+	<div id="recapbox" class="recapbox">
+		 <table border="1" cellpadding="15" cellspacing="" >
+				<tr>
+					 <td>
+							<p class="recap">Clicks this Month</p>
+							<p class="stats">300</p>
+					 </td>
+					 <td>
+							<p class="recap">Earned this Month</p>
+							<p class="stats">$0.00</p>
+					 </td>
+					 <td>
+							<p class="recap">Total Earned</p>
+							<p class="stats">$0.00</p>
+					 </td>
+				</tr>
+		 </table>
+	</div>
+	<button type="submit" style="width: 90%;" class="btn btn-danger center">Payout Balance</button>
+	<br>
+	<br>
+<!-- Collapsable Divs for Graphs -->
+<div class="panel-group" id="accordion">
+<div class="panel panel-default" id="panel1">
+		<div class="panel-heading">
+				 <h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#collapseOne"
+						 href="#collapseOne">
+					Daily Click Statistics
+					</a>
+				</h4>
+
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<canvas id="dayClicks" width="auto" height="300"></canvas>
+				</div>
+</div>
+</div>
+<div class="panel panel-default" id="panel2">
+		<div class="panel-heading">
+				 <h4 class="panel-title">
+					<a data-toggle="collapse" data-target="#collapseTwo"
+						 href="#collapseTwo">
+					Monthly Click Statistics
+					</a>
+				</h4>
+
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<canvas id="dayClicks" width="auto" height="300"></canvas>
+				</div>
+</div>
+</div>
+
+</div>
+</div>
+</template>
