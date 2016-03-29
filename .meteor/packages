@@ -22,6 +22,5 @@ accounts-base
 accounts-password
 mizzao:bootstrap-3
 iron:router
-chart:chart
 alanning:roles
-email
+matb33:collection-hooks

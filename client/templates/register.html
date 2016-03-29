@@ -79,7 +79,7 @@
   <div class="col-md-8">
     <select id="businessSupport" name="registerBusinessSupport" class="form-control">
         {{#each bus}}
-            <option value="{{busURL}}">{{busName}}</option>
+            <option value="{{profile.url}}">{{profile.bname}}</option>
         {{/each}}
     </select>
   </div>
@@ -107,7 +107,8 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="button1id"></label>
   <div class="col-md-8">
-    <button id="register" name="Register" class="btn btn-success">Register</button>
+    <button id="button1id" name="Register" class="btn btn-success">Register</button>
+    <button id="button2id" name="button2id" class="btn btn-danger">Cancel</button>
   </div>
 </div>
 </fieldset>
