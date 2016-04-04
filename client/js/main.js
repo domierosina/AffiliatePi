@@ -115,6 +115,44 @@ Template.loginButton.events({
     }
 });
 
+Template.user.helpers({
+    monthClicks: function() {
+        var oneMonthAgo = moment().subtract(1, "months").toDate();
+        return Clicks.find({createdAt: {$gte: oneMonthAgo}}).count();
+    },
+
+    totalEarned: function() {
+        var cost = 0.02;
+        var c = Clicks.find({userID: Meteor.userId()}).count()*cost;
+        console.log("total earned: " + c);
+        return c;
+    },
+
+    monthEarned: function() {
+        var oneMonthAgo = moment().subtract(1, "months").toDate();
+        return Clicks.find({createdAt: {$gte: oneMonthAgo}}).count()*0.02;
+    }
+});
+
+Template.business.helpers({
+    totalUsers: function() {
+        return Meteor.users.find({"profile.businessURL": Meteor.user().profile.url}).count();
+        //To christopher henry:
+        //This seems to be a bizarre little quirk of meteor, but any queries
+        //that call on a profile field need to be put in quotation marks, as
+        //above. I have no idea why it is necessary, and the most confusing
+        //part is that instead of throwing an error message, the queries work
+        //just fine but they always evalue to "0". A couple different times 
+        //during this project I had to figure that out and there is little or 
+        //no documentation on it anywhere. Maybe briefly add that to your 
+        //slides for the next group of students, if possible.
+    }
+})
+
+Template.dashboard.helpers({
+    name: function() {return Meteor.user().username;},
+    id: function() {return Meteor.userId();}
+});
 //Meteor.loginWithPassword(email, password, function(error){
 //    if(error){
 //        console.log(error.reason);
