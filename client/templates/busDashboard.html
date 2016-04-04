@@ -3,23 +3,7 @@
 *
 -->
 <template name="business">
-<script>
-var buyerData = {
-	labels : ["January","February","March","April","May","June"],
-	datasets : [
-		{
-			fillColor : "rgba(203, 97, 89, 0.4)",
-			strokeColor : "#B2201C",
-			pointColor : "#fff",
-			pointStrokeColor : "#8D0805",
-			data : [203,156,99,251,305,247]
-		}
-	]
-}
-var buyers = document.getElementById('dayClicks').getContext('2d');
-            // draw line chart
-            new Chart(buyers).Line(buyerData);
-</script>
+
 
 <div class ="col-sm-9 hr">
 	<!-- Recap box for the information of the user/business-->
@@ -28,7 +12,7 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 				<tr>
 					 <td>
 							<p class="recap">Total Members</p>
-							<p class="stats">###</p>
+							<p class="stats">{{totalUsers}}</p>
 					 </td>
 				</tr>
 		 </table>
@@ -43,7 +27,7 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 					<a data-toggle="collapse" data-target="#collapseOne"
 						 href="#collapseOne">
 						 <!-- For this business only! -->
-					Top Performers Statistics
+					Recent Performance!
 					</a>
 				</h4>
 
@@ -61,7 +45,7 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 					<a data-toggle="collapse" data-target="#collapseTwo"
 						 href="#collapseTwo">
 						 <!-- To compare with other companies -->
-					Top Businesses
+					Monthly Click Statistics!
 					</a>
 				</h4>
 
@@ -75,4 +59,90 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 
 </div>
 </div>
+<script>
+
+        var oneDay = moment().subtract(1, "days").toDate();
+        var twoDay = moment().subtract(2, "days").toDate();
+        var threeDay = moment().subtract(3, "days").toDate();
+        var fourDay = moment().subtract(4, "days").toDate();
+        var fiveDay = moment().subtract(5, "days").toDate();
+        var sixDay = moment().subtract(6, "days").toDate();
+
+        var dataArray = [
+            Clicks.find({createdAt: {$gte: oneDay}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: twoDay, $lt: oneDay}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: threeDay, $lt: twoDay}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: fourDay, $lt: threeDay}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: fiveDay, $lt: fourDay}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: sixDay, $lt: fiveDay}, url: Meteor.user().profile.url}).count()
+        ];
+
+        var dates = [
+        	moment().format('dddd'),
+        	moment(oneDay).format('dddd'),
+        	moment(twoDay).format('dddd'),
+        	moment(threeDay).format('dddd'),
+        	moment(fourDay).format('dddd'),
+        	moment(fiveDay).format('dddd')
+        ];
+
+        console.log(dataArray);
+
+        var buyerData = {
+            labels : dates,
+            datasets : [
+                {
+                    fillColor : "rgba(203, 97, 89, 0.4)",
+                    strokeColor : "#B2201C",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#8D0805",
+                    data : dataArray,
+                    responsive: true
+                }
+            ]
+        };
+        var buyers = document.getElementById('topPerformers').getContext('2d');
+        // draw line chart
+        new Chart(buyers).Line(buyerData);
+    </script>
+    <script>
+
+        var oneMonthAgo = moment().subtract(1, "months").toDate();
+        var twoMonthsAgo = moment().subtract(2, "months").toDate();
+        var threeMonthsAgo = moment().subtract(3, "months").toDate();
+        var fourMonthsAgo = moment().subtract(4, "months").toDate();
+        var fiveMonthsAgo = moment().subtract(5, "months").toDate();
+
+        var dataArray = [
+            Clicks.find({createdAt: {$gte: oneMonthAgo}, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: twoMonthsAgo, $lt: oneMonthAgo }, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: threeMonthsAgo, $lt: twoMonthsAgo }, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: fourMonthsAgo, $lt: threeMonthsAgo }, url: Meteor.user().profile.url}).count(),
+            Clicks.find({createdAt: {$gte: fiveMonthsAgo, $lt: fourMonthsAgo }, url: Meteor.user().profile.url}).count()
+        ];
+
+        console.log(dataArray);
+
+        var buyerData = {
+            labels : [
+            			moment().format('MMMM'),
+            			moment(oneMonthAgo).format('MMMM'),
+            			moment(twoMonthsAgo).format('MMMM'),
+            			moment(threeMonthsAgo).format('MMMM'),
+            			moment(fourMonthsAgo).format('MMMM')
+            		],
+            datasets : [
+                {
+                    fillColor : "rgba(203, 97, 89, 0.4)",
+                    strokeColor : "#B2201C",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#8D0805",
+                    data : dataArray
+                }
+            ]
+        };
+        var buyers = document.getElementById('business').getContext('2d');
+        // draw line chart
+        new Chart(buyers).Line(buyerData);
+    </script>
 </template>

@@ -3,23 +3,7 @@
 *
 -->
 <template name="user">
-<script>
-var buyerData = {
-	labels : ["January","February","March","April","May","June"],
-	datasets : [
-		{
-			fillColor : "rgba(203, 97, 89, 0.4)",
-			strokeColor : "#B2201C",
-			pointColor : "#fff",
-			pointStrokeColor : "#8D0805",
-			data : [203,156,99,251,305,247]
-		}
-	]
-}
-var buyers = document.getElementById('dayClicks').getContext('2d');
-            // draw line chart
-            new Chart(buyers).Line(buyerData);
-</script>
+
 
 <div class ="col-sm-9 hr">
 	<!-- Recap box for the information of the user/business-->
@@ -28,15 +12,15 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 				<tr>
 					 <td>
 							<p class="recap">Clicks this Month</p>
-							<p class="stats">300</p>
+							<p class="stats">{{monthClicks}}</p>
 					 </td>
 					 <td>
 							<p class="recap">Earned this Month</p>
-							<p class="stats">$0.00</p>
+							<p class="stats">${{monthEarned}}</p>
 					 </td>
 					 <td>
 							<p class="recap">Total Earned</p>
-							<p class="stats">$0.00</p>
+							<p class="stats">${{totalEarned}}</p>
 					 </td>
 				</tr>
 		 </table>
@@ -74,11 +58,91 @@ var buyers = document.getElementById('dayClicks').getContext('2d');
 		</div>
 		<div id="collapseTwo" class="panel-collapse collapse in">
 				<div class="panel-body">
-					<canvas id="dayClicks" width="auto" height="300"></canvas>
+					<canvas id="monthClicks" width="auto" height="300"></canvas>
 				</div>
 </div>
 </div>
 
 </div>
 </div>
+    <script>
+
+        var oneDay = moment().subtract(1, "days").toDate();
+        var twoDay = moment().subtract(2, "days").toDate();
+        var threeDay = moment().subtract(3, "days").toDate();
+        var fourDay = moment().subtract(4, "days").toDate();
+        var fiveDay = moment().subtract(5, "days").toDate();
+
+        var dataArray = [
+            Clicks.find({createdAt: {$gte: oneDay}}).count(),
+            Clicks.find({createdAt: {$gte: twoDay, $lt: oneDay}}).count(),
+            Clicks.find({createdAt: {$gte: threeDay, $lt: twoDay}}).count(),
+            Clicks.find({createdAt: {$gte: fourDay, $lt: threeDay}}).count(),
+            Clicks.find({createdAt: {$gte: fiveDay, $lt: fourDay}}).count()
+        ];
+
+        console.log(dataArray);
+
+        var dates = [
+            moment().format('dddd'),
+            moment(oneDay).format('dddd'),
+            moment(twoDay).format('dddd'),
+            moment(threeDay).format('dddd'),
+            moment(fourDay).format('dddd'),
+            //moment(fiveDay).format('dddd')
+        ];
+
+        var buyerData = {
+            labels : dates,
+            datasets : [
+                {
+                    fillColor : "rgba(203, 97, 89, 0.4)",
+                    strokeColor : "#B2201C",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#8D0805",
+                    data : dataArray
+                }
+            ]
+        };
+        var buyers = document.getElementById('dayClicks').getContext('2d');
+        // draw line chart
+        new Chart(buyers).Line(buyerData);
+    </script>
+    <script>
+
+        var oneMonthAgo = moment().subtract(1, "months").toDate();
+        var twoMonthsAgo = moment().subtract(2, "months").toDate();
+        var threeMonthsAgo = moment().subtract(3, "months").toDate();
+
+        var dataArray = [
+            Clicks.find({createdAt: {$gte: oneMonthAgo}}).count(),
+            Clicks.find({createdAt: {$gte: twoMonthsAgo, $lt: oneMonthAgo }}).count(),
+            Clicks.find({createdAt: {$gte: threeMonthsAgo, $lt: twoMonthsAgo }}).count()
+        ];
+
+        var dates = [
+            moment().format('MMMM'),
+            moment(oneMonthAgo).format('MMMM'),
+            moment(twoMonthsAgo).format('MMMM'),
+
+        ];
+
+        console.log(dataArray);
+
+        var buyerData = {
+            labels : dates,
+            datasets : [
+                {
+                    fillColor : "rgba(203, 97, 89, 0.4)",
+                    strokeColor : "#B2201C",
+                    pointColor : "#fff",
+                    pointStrokeColor : "#8D0805",
+                    data : dataArray
+                }
+            ]
+        };
+        var buyers = document.getElementById('monthClicks').getContext('2d');
+        // draw line chart
+        new Chart(buyers).Line(buyerData);
+    </script>
 </template>

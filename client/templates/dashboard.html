@@ -2,7 +2,11 @@
 <div class="container">
   <div class="row">
     <div class ="col-sm-3">
-      <p class="center">{{username}}, you are logged in.</p>
+
+      {{#if isInRole 'user'}}
+          <p class="center">{{name}}, you are now logged in.</p>
+      {{/if}}
+
       <p class="center">Welcome back! </p>
       <br>
       <br>
@@ -19,20 +23,29 @@
         <p class="center"><a href="#" class="dashControls">TWITTER KIT</a></p>
         <p class="center"><a href="#" class="dashControls">BLOG KIT</a></p>
 
-      <h5>How to Get Clicks!</h5>
-        <p>To manually share any link with your Partner code applied, add the
-          following parameter to the end of the business URL you support: /ClickServlet?id= </p>
+      {{#if isInRole 'user'}}
+          <h5>How to Get Clicks!</h5>
+          <p>To manually share the link with your Partner code applied, add your unique
+          identifier code to the end of our URL: /click/{{id}} </p>
+      {{/if}}  
+      
 
-      </div>
+    </div>
 <!-- This is for displaying the proper information -->
-    <!-- {{#if isInRole 'admin'}}
-        {{>admin }}
-    {{else if isInRole 'user'}}
-        {{>user }}
-    {{else if isInRole'business'}}
-        {{>business }}
-    {{/if}} -->
+    <!--{{#if isInRole 'admin'}}-->
+        <!--{{> admin}}-->
+    <!--{{else if isInRole 'user'}}-->
+        <!--{{> user}}-->
+    <!--{{else if isInRole 'business'}}-->
+        <!--{{> business}}-->
+    <!--{{/if}}-->
 
-</div>
+      {{#if isInRole 'user'}}
+          {{> user}}
+      {{/if}}
+      {{#if isInRole 'business'}}
+          {{> business}}
+      {{/if}}
+  </div>
 </div>
 </template>
