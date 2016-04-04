@@ -24,3 +24,6 @@ mizzao:bootstrap-3
 iron:router
 alanning:roles
 matb33:collection-hooks
+email
+chart:chart
+momentjs:moment
